@@ -10,36 +10,36 @@ import {
 } from 'semantic-ui-react';
 import EventListAttendee from './EventListAttendee';
 
-function EventListItem() {
+function EventListItem({ event }) {
   return (
     <Segment.Group>
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image size='tiny' circular src='/assets/user.png' />
+            <Item.Image size='tiny' circular src={event.hostPhotoURL} />
             <Item.Content>
-              <Item.Header content='Event Title' />
-              <Item.Description>Hosted by Bob</Item.Description>
+              <Item.Header content={event.title} />
+              <Item.Description>Hosted by {event.hostedBy}</Item.Description>
             </Item.Content>
           </Item>
         </Item.Group>
       </Segment>
       <Segment>
         <span>
-          <Icon name='clock' /> Date
-          <Icon name='marker' />
+          <Icon name='clock' /> {event.date}
+          <Icon name='marker' /> {event.venue}
           Venue
         </span>
       </Segment>
       <Segment>
         <List horizontal>
-          <EventListAttendee />
-          <EventListAttendee />
-          <EventListAttendee />
+          {event.attendees.map((attendee) => (
+            <EventListAttendee key={attendee.id} attendee={attendee} />
+          ))}
         </List>
       </Segment>
       <Segment clearing>
-        <div>Event Description</div>
+        <div>{event.description}</div>
         <Button
           className='pinkButton'
           color='pink'
