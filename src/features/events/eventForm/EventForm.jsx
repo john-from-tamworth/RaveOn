@@ -24,7 +24,13 @@ function EventForm() {
         <Form.Field>
           <input type='date' placeholder='Date' />
         </Form.Field>
-        <Button type='submit' floated='right' content='Submit' color='pink' />
+        <Button
+          type='submit'
+          floated='right'
+          content='Submit'
+          className='pinkButton'
+          color='pink'
+        />
         <Button type='submit' floated='right' content='Cancel' />
       </Form>
     </Segment>

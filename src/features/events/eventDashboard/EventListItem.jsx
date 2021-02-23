@@ -40,7 +40,12 @@ function EventListItem() {
       </Segment>
       <Segment clearing>
         <div>Event Description</div>
-        <Button color='pink' floated='right' content='view' />
+        <Button
+          className='pinkButton'
+          color='pink'
+          floated='right'
+          content='view'
+        />
       </Segment>
     </Segment.Group>
   );

@@ -9,3 +9,6 @@ body {
 .ui.main.container {
   margin-top: 7em;
 }
+.ui.button.pinkButton {
+  background-color: #ee0979;
+}
