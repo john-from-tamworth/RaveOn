@@ -8,17 +8,17 @@ export const sampleData = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
     city: 'NY, USA',
     venue: 'Empire State Building, 5th Avenue, New York, NY, USA',
-    hostedBy: 'Bob',
+    hostedBy: 'Bruce Wayne',
     hostPhotoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
     attendees: [
       {
         id: 'a',
-        name: 'Bob',
+        name: 'Gianni',
         photoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
       },
       {
         id: 'b',
-        name: 'Tom',
+        name: 'Leeeeeeroy',
         photoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
       },
     ],
@@ -32,17 +32,17 @@ export const sampleData = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
     city: 'London, UK',
     venue: 'Punch & Judy, Henrietta Street, London, UK',
-    hostedBy: 'Tom',
+    hostedBy: 'Leeeeeroy',
     hostPhotoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
     attendees: [
       {
         id: 'a',
-        name: 'Bob',
+        name: 'Gianni',
         photoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
       },
       {
         id: 'b',
-        name: 'Tom',
+        name: 'St James the 1st',
         photoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
       },
     ],
