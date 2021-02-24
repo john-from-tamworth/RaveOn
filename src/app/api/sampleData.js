@@ -1,15 +1,16 @@
 export const sampleData = [
   {
     id: '1',
-    title: 'Trip to Empire State building',
-    date: '2018-03-21',
-    category: 'culture',
+    title: 'Back 2 Love',
+    date: '2021-06-21',
+    category: 'All Day Party',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
-    city: 'NY, USA',
-    venue: 'Empire State Building, 5th Avenue, New York, NY, USA',
-    hostedBy: 'Bruce Wayne',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
+      'With lockdown lifted we are excited to throw an all day party playing the best in classic funky house!  Dress to impress!',
+    city: 'Spain, Ibiza',
+    venue: 'Pacha, Ibiza',
+    hostedBy: 'Glitter Box',
+    hostPhotoURL:
+      'https://www.houseoffrankie.com/wportal/wp-content/uploads/2019/02/h2c-AUls-e1549364219645-696x710.jpeg',
     attendees: [
       {
         id: 'a',
@@ -25,15 +26,16 @@ export const sampleData = [
   },
   {
     id: '2',
-    title: 'Trip to Punch and Judy Pub',
-    date: '2018-03-18',
-    category: 'drinks',
+    title: 'Pure Garage with DJ EZ',
+    date: '2021-06-27',
+    category: 'All day party',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
+      'After some monster sets during lockdown, the one and only DJ EZ will be playing a marathon 12 hour set!  Can you handle it? Playing the best in oldskool bangers, future classics and everything in between.  Early birds tickets available.  BE FAST - THIS WILL SELL OUT!',
     city: 'London, UK',
-    venue: 'Punch & Judy, Henrietta Street, London, UK',
-    hostedBy: 'Leeeeeroy',
-    hostPhotoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
+    venue: 'Ministry Of Sound, London, UK',
+    hostedBy: 'DJ EZ',
+    hostPhotoURL:
+      'https://popularbio.com/wp-content/uploads/2020/05/DJ-EZ-1.jpeg',
     attendees: [
       {
         id: 'a',

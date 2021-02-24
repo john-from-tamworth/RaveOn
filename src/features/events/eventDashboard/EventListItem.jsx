@@ -28,7 +28,6 @@ function EventListItem({ event, selectEvent }) {
         <span>
           <Icon name='clock' /> {event.date}
           <Icon name='marker' /> {event.venue}
-          Venue
         </span>
       </Segment>
       <Segment>
