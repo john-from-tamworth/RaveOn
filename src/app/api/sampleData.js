@@ -14,8 +14,8 @@ export const sampleData = [
     attendees: [
       {
         id: 'a',
-        name: 'Gianni',
-        photoURL: 'https://randomuser.me/api/portraits/men/20.jpg',
+        name: 'Lana',
+        photoURL: 'https://randomuser.me/api/portraits/women/46.jpg',
       },
       {
         id: 'b',
@@ -44,8 +44,8 @@ export const sampleData = [
       },
       {
         id: 'b',
-        name: 'St James the 1st',
-        photoURL: 'https://randomuser.me/api/portraits/men/22.jpg',
+        name: 'Claire',
+        photoURL: 'https://randomuser.me/api/portraits/women/89.jpg',
       },
     ],
   },
