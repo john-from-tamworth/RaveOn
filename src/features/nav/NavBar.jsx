@@ -1,30 +1,31 @@
-import React from 'react';
-import { Button, Icon, Container, Menu, MenuHeader } from 'semantic-ui-react';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { Button, Icon, Container, Menu, MenuHeader } from "semantic-ui-react";
 
 export default function NavBar({ setFormOpen }) {
   return (
-    <Menu inverted fixed='top'>
+    <Menu inverted fixed="top">
       <Container>
-        <Menu.Item header>
-          <img src='assets/logo3.png' alt='logo' style={{ marginRight: 15 }} />
+        <Menu.Item as={NavLink} exact to="/" header>
+          <img src="assets/logo3.png" alt="logo" style={{ marginRight: 15 }} />
           RaveOn
         </Menu.Item>
-        <Menu.Item name='Events' />
-        <Menu.Item>
-          <Button onClick={() => setFormOpen(true)} animated inverted>
+        <Menu.Item as={NavLink} to="events" name="Events" />
+        <Menu.Item as={NavLink} to="createevent">
+          <Button animated inverted>
             <Button.Content visible>Create Event</Button.Content>
             <Button.Content hidden>
-              <Icon name='arrow right' />
+              <Icon name="forward" />
             </Button.Content>
           </Button>
         </Menu.Item>
-        <Menu.Item position='right'>
-          <Button basic inverted content='Login' />
+        <Menu.Item position="right">
+          <Button basic inverted content="Login" />
           <Button
             basic
             inverted
-            content='Register'
-            style={{ marginLeft: '0.5em' }}
+            content="Register"
+            style={{ marginLeft: "0.5em" }}
           />
         </Menu.Item>
       </Container>
