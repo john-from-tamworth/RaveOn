@@ -20,7 +20,7 @@ export default function NavBar({ setFormOpen }) {
           <img src="assets/logo3.png" alt="logo" style={{ marginRight: 15 }} />
           RaveOn
         </Menu.Item>
-        <Menu.Item as={NavLink} to="events" name="Events" />
+        <Menu.Item as={NavLink} to="/events" name="Events" />
         {authenticated && (
           <Menu.Item as={NavLink} to="/createEvent">
             <Button animated inverted>

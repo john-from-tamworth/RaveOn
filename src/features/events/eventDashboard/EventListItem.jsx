@@ -1,13 +1,6 @@
 import React from "react";
-import {
-  Button,
-  Icon,
-  Item,
-  ItemContent,
-  ItemDescription,
-  List,
-  Segment,
-} from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Button, Icon, Item, List, Segment } from "semantic-ui-react";
 import EventListAttendee from "./EventListAttendee";
 
 function EventListItem({ event, selectEvent, deleteEvent }) {
@@ -40,7 +33,8 @@ function EventListItem({ event, selectEvent, deleteEvent }) {
       <Segment clearing>
         <div>{event.description}</div>
         <Button
-          onClick={() => selectEvent(event)}
+          as={Link}
+          to={`/events/${event.id}`}
           className="pinkButton"
           color="pink"
           floated="right"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Icon, Menu } from "semantic-ui-react";
+import { Button, Menu } from "semantic-ui-react";
 
 function SignedOutMenu({ setAuthenticated }) {
   return (

@@ -23,3 +23,11 @@ body {
 .masthead h1.ui.header {
   font-size: 4em;
 }
+
+.ui.inverted.pink.segment {
+  background-image: linear-gradient(to right, #ee0979, #ff6a00);
+}
+
+.ui.inverted.attached.segment {
+  background-image: linear-gradient(to right, #ee0979, #ff6a00);
+}
