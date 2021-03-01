@@ -12,3 +12,14 @@ body {
 .ui.button.pinkButton {
   background-color: #ee0979;
 }
+
+.masthead {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to right, #ee0979, #ff6a00) !important;
+  height: 100vh;
+}
+
+.masthead h1.ui.header {
+  font-size: 4em;
+}

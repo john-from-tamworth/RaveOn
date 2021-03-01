@@ -1,4 +1,3 @@
-import { createEvent } from "@testing-library/react";
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { Button, Container } from "semantic-ui-react";
@@ -24,13 +23,20 @@ function App() {
 
   return (
     <>
-      <NavBar setFormOpen={handleCreateFormOpen} />
-      <Container className="main">
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/events" component={EventDasboard} />
-        <Route path="/events/:id" component={EventDetailedPage} />
-        <Route path="/createEvent" component={EventForm} />
-      </Container>
+      <Route exact path="/" component={HomePage} />
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <>
+            <NavBar setFormOpen={handleCreateFormOpen} />
+            <Container className="main">
+              <Route exact path="/events" component={EventDasboard} />
+              <Route path="/events/:id" component={EventDetailedPage} />
+              <Route path="/createEvent" component={EventForm} />
+            </Container>
+          </>
+        )}
+      />
     </>
   );
 }
