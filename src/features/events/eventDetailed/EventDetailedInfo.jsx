@@ -17,7 +17,7 @@ function EventDetailedInfo() {
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon name="calendar" size="large" color="pink" />
+            <Icon name="calendar alternate outline" size="large" color="pink" />
           </Grid.Column>
           <Grid.Column width={15}>
             <span>Event Date</span>
@@ -27,7 +27,7 @@ function EventDetailedInfo() {
       <Segment attached>
         <Grid verticalAlign="middle">
           <Grid.Column width={1}>
-            <Icon name="marker" size="large" color="pink" />
+            <Icon name="map outline" size="large" color="pink" />
           </Grid.Column>
           <Grid.Column width={11}>
             <span>Event Venue</span>

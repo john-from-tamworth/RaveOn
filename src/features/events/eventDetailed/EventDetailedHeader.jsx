@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Segment, Image, Item, Header, Button } from "semantic-ui-react";
+import { Segment, Image, Item, Header, Button, Icon } from "semantic-ui-react";
 
 const eventImageStyle = {
   filter: "brightness(30%)",
@@ -46,8 +46,11 @@ function EventDetailedHeader() {
 
       <Segment attached="bottom">
         <Button>Cancel My Place</Button>
-        <Button className="pinkButton" color="pink">
-          JOIN THIS EVENT
+        <Button animated color="pink" className="pinkButton">
+          <Button.Content visible>I Want To Attend</Button.Content>
+          <Button.Content hidden>
+            <Icon name="thumbs up" />
+          </Button.Content>
         </Button>
 
         <Button as={Link} to={`/manage/`} color="orange" floated="right">

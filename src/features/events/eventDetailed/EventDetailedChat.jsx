@@ -12,7 +12,7 @@ function EventDetailedChat() {
         color="pink"
         style={{ border: "none" }}
       >
-        <Header>Chat about this event</Header>
+        <Header>......Discuss</Header>
       </Segment>
 
       <Segment attached>
