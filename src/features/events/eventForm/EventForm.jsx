@@ -5,7 +5,7 @@ import { Button, Form, Header, Segment } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { createEvent, updateEvent } from "../eventActions";
 
-function EventForm({ match }) {
+function EventForm({ match, history }) {
   const dispatch = useDispatch();
   const selectedEvent = useSelector((state) =>
     state.event.events.find((e) => e.id === match.params.id)
@@ -33,6 +33,7 @@ function EventForm({ match }) {
             hostPhotoURL: "/assets/user.png",
           })
         );
+    history.push("/events");
   }
 
   function handleInputChange(e) {
