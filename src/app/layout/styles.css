@@ -31,3 +31,7 @@ body {
 .ui.inverted.attached.segment {
   background-image: linear-gradient(to right, #ee0979, #ff6a00);
 }
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
