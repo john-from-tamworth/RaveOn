@@ -57,42 +57,51 @@ function EventForm({ match, history }) {
           history.push("/events");
         }}
       >
-        <Form className="ui form">
-          <Header sub color="pink" content="Event Details" />
-          <FormTextInput name="title" placeholder="Event Title" />
-          <FormSelectInput
-            name="category"
-            placeholder="Category"
-            options={categoryData}
-          />
-          <FormTextArea name="description" placeholder="Description" rows={4} />
-          <Header sub color="pink" content="Location" />
-          <FormTextInput name="city" placeholder="City" />
-          <FormTextInput name="venue" placeholder="Venue" />
-          <DateInput
-            name="date"
-            placeholderText="date"
-            timeFormat="HH:mm"
-            showTimeSelect
-            timeCaption="time"
-            dateFormat="MMMM d, yyyy h:mm a"
-          />
+        {({ isSubmitting, dirty, isValid }) => (
+          <Form className="ui form">
+            <Header sub color="pink" content="Event Details" />
+            <FormTextInput name="title" placeholder="Event Title" />
+            <FormSelectInput
+              name="category"
+              placeholder="Category"
+              options={categoryData}
+            />
+            <FormTextArea
+              name="description"
+              placeholder="Description"
+              rows={4}
+            />
+            <Header sub color="pink" content="Location" />
+            <FormTextInput name="city" placeholder="City" />
+            <FormTextInput name="venue" placeholder="Venue" />
+            <DateInput
+              name="date"
+              placeholderText="date"
+              timeFormat="HH:mm"
+              showTimeSelect
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm a"
+            />
 
-          <Button
-            type="submit"
-            floated="right"
-            content="Submit"
-            className="pinkButton"
-            color="pink"
-          />
-          <Button
-            as={Link}
-            to="/events"
-            type="submit"
-            floated="right"
-            content="Cancel"
-          />
-        </Form>
+            <Button
+              loading={isSubmitting}
+              disabled={!isValid || !dirty || isSubmitting}
+              type="submit"
+              floated="right"
+              content="Submit"
+              className="pinkButton"
+              color="pink"
+            />
+            <Button
+              disable={isSubmitting}
+              as={Link}
+              to="/events"
+              type="submit"
+              floated="right"
+              content="Cancel"
+            />
+          </Form>
+        )}
       </Formik>
     </Segment>
   );
