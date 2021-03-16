@@ -1,10 +1,10 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { Button, Icon, Item, List, Segment } from "semantic-ui-react";
-import EventListAttendee from "./EventListAttendee";
-import { deleteEvent } from "../eventActions";
-import { format } from "date-fns";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button, Icon, Item, List, Segment } from 'semantic-ui-react';
+import EventListAttendee from './EventListAttendee';
+import { deleteEvent } from '../eventActions';
+import { format } from 'date-fns';
 
 function EventListItem({ event }) {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ function EventListItem({ event }) {
       <Segment>
         <Item.Group>
           <Item>
-            <Item.Image size="tiny" circular src={event.hostPhotoURL} />
+            <Item.Image size='tiny' circular src={event.hostPhotoURL} />
             <Item.Content>
               <Item.Header content={event.title} />
               <Item.Description>Hosted by {event.hostedBy}</Item.Description>
@@ -24,9 +24,9 @@ function EventListItem({ event }) {
       </Segment>
       <Segment>
         <span>
-          <Icon name="clock outline" />
-          {format(event.date, "MMMM d, yyyy h:mm a   ")}
-          <Icon name="map outline" /> {event.venue}
+          <Icon name='clock outline' />
+          {format(event.date, 'MMMM d, yyyy h:mm a   ')}
+          <Icon name='map outline' /> {event.venue.address}
         </span>
       </Segment>
       <Segment>
@@ -41,16 +41,16 @@ function EventListItem({ event }) {
         <Button
           as={Link}
           to={`/events/${event.id}`}
-          className="pinkButton"
-          color="pink"
-          floated="right"
-          content="View"
+          className='pinkButton'
+          color='pink'
+          floated='right'
+          content='View'
         />
         <Button
           onClick={() => dispatch(deleteEvent(event.id))}
-          color="red"
-          floated="right"
-          content="Delete"
+          color='red'
+          floated='right'
+          content='Delete'
         />
       </Segment>
     </Segment.Group>

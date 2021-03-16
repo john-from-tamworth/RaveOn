@@ -1,3 +1,4 @@
+/* global google */
 import cuid from 'cuid';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -68,7 +69,7 @@ function EventForm({ match, history }) {
           history.push('/events');
         }}
       >
-        {({ isSubmitting, dirty, isValid }) => (
+        {({ isSubmitting, dirty, isValid, values }) => (
           <Form className='ui form'>
             <Header sub color='pink' content='Event Details' />
             <FormTextInput name='title' placeholder='Event Title' />
@@ -84,7 +85,16 @@ function EventForm({ match, history }) {
             />
             <Header sub color='pink' content='Location' />
             <MyPlaceInput name='city' placeholder='City' />
-            <MyPlaceInput name='venue' placeholder='Venue' />
+            <MyPlaceInput
+              name='venue'
+              disabled={!values.city.latLng}
+              placeholder='Venue'
+              options={{
+                location: new google.maps.LatLng(values.city.latLng),
+                radius: 1000,
+                types: ['establishment'],
+              }}
+            />
             <DateInput
               name='date'
               placeholderText='date'
