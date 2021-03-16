@@ -1,8 +1,9 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Button } from "semantic-ui-react";
-import { openModal } from "../../app/common/modals/modalReducer";
-import { decrement, increment } from "./testReducer";
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button } from 'semantic-ui-react';
+import { openModal } from '../../app/common/modals/modalReducer';
+import PlacesTest from './PlacesTest';
+import { decrement, increment } from './testReducer';
 
 function Sandbox() {
   const dispatch = useDispatch();
@@ -14,21 +15,24 @@ function Sandbox() {
       <h3>data is: {data} </h3>
       <Button
         onClick={() => dispatch(increment(20))}
-        content="Increment"
-        color="green"
+        content='Increment'
+        color='green'
       />
       <Button
         onClick={() => dispatch(decrement(10))}
-        content="Decrement"
-        color="red"
+        content='Decrement'
+        color='red'
       />
       <Button
         onClick={() =>
-          dispatch(openModal({ modalType: "TestModal", modalProps: { data } }))
+          dispatch(openModal({ modalType: 'TestModal', modalProps: { data } }))
         }
-        content="open Modal"
-        color="teal"
+        content='open Modal'
+        color='teal'
       />
+      <div style={{ marginTop: 15 }}>
+        <PlacesTest />
+      </div>
     </>
   );
 }
