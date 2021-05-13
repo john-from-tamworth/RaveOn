@@ -9,7 +9,7 @@ function EventFilters() {
         <Header
           className='filter'
           icon='filter'
-          attched
+          attached
           color='pink'
           content='Filters'
         />
