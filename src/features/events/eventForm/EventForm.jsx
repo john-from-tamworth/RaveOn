@@ -1,10 +1,10 @@
 /* global google */
 import cuid from 'cuid';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Header, Segment, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createEvent, updateEvent } from '../eventActions';
+import { createEvent, listenToEvents, updateEvent } from '../eventActions';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import FormTextInput from '../../../app/common/form/FormTextInput';
@@ -13,12 +13,22 @@ import FormSelectInput from '../../../app/common/form/FormSelectInput';
 import { categoryData } from '../../../app/api/categoryChoices';
 import DateInput from '../../../app/common/form/DateInput';
 import MyPlaceInput from '../../../app/common/form/MyPlaceInput';
+import {
+  addEventToFirestore,
+  listenToEventFromFirestore,
+  updateEventInFirestore,
+} from '../../../app/firestore/firestoreService';
+import useFirestoreDoc from '../../../app/hooks/useFirestoreDoc';
+import LoadingIndicator from '../../../app/layout/LoadingIndicator';
+import { toast } from 'react-toastify';
 
 function EventForm({ match, history }) {
   const dispatch = useDispatch();
   const selectedEvent = useSelector((state) =>
     state.event.events.find((e) => e.id === match.params.id)
   );
+  const { loading, error } = useSelector((state) => state.async);
+
   const initialValues = selectedEvent ?? {
     title: '',
     category: '',
@@ -49,24 +59,33 @@ function EventForm({ match, history }) {
     date: Yup.string().required(),
   });
 
+  useFirestoreDoc({
+    shouldExecute: !!match.params.id,
+    query: () => listenToEventFromFirestore(match.params.id),
+    data: (event) => dispatch(listenToEvents([event])),
+    deps: [match.params.id, dispatch],
+  });
+
+  if (loading) return <LoadingIndicator content='Now Loading...' />;
+
+  if (error) return <Redirect to='/error' />;
+
   return (
     <Segment clearing>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values) => {
-          selectedEvent
-            ? dispatch(updateEvent({ ...selectedEvent, ...values }))
-            : dispatch(
-                createEvent({
-                  ...values,
-                  id: cuid(),
-                  hostedby: 'Gianni',
-                  attendees: [],
-                  hostPhotoURL: '/assets/user.png',
-                })
-              );
-          history.push('/events');
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            selectedEvent
+              ? await updateEventInFirestore(values)
+              : await addEventToFirestore(values);
+            setSubmitting(false);
+            history.push('/events');
+          } catch (error) {
+            toast.error(error.message);
+            setSubmitting(false);
+          }
         }}
       >
         {({ isSubmitting, dirty, isValid, values }) => (
