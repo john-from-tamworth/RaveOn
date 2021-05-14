@@ -49,5 +49,11 @@ export function updateEventInFirestore(event) {
 }
 
 export function deleteEventInFirestore(eventId) {
-  return db.collection('events').doc(eventId).delete();
+  return db.collection('events').doc(eventId).delete(); //will remove this function before hosting, users can cancel an event rather than delete
+}
+
+export function cancelEventToggle(event) {
+  return db.collection('events').doc(event.id).update({
+    isCancelled: !event.isCancelled,
+  });
 }

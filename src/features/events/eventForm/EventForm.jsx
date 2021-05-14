@@ -17,6 +17,7 @@ import {
   addEventToFirestore,
   listenToEventFromFirestore,
   updateEventInFirestore,
+  cancelEventToggle,
 } from '../../../app/firestore/firestoreService';
 import useFirestoreDoc from '../../../app/hooks/useFirestoreDoc';
 import LoadingIndicator from '../../../app/layout/LoadingIndicator';
@@ -122,6 +123,17 @@ function EventForm({ match, history }) {
               timeCaption='time'
               dateFormat='MMMM d, yyyy h:mm a'
             />
+            {selectedEvent && (
+              <Button
+                color={selectedEvent.isCancelled ? 'green' : 'red'}
+                type='button'
+                floated='left'
+                content={
+                  selectedEvent.isCancelled ? 'Re-Open Event' : 'Cancel Event'
+                }
+                onClick={() => cancelEventToggle(selectedEvent)}
+              />
+            )}
 
             <Button
               animated
