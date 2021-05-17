@@ -1,37 +1,40 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { Dropdown, Image, Menu } from "semantic-ui-react";
-import { signOutUser } from "../auth/authActions";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Dropdown, Image, Menu } from 'semantic-ui-react';
+import { signOutFirebase } from '../../app/firestore/firebaseService';
 
 function SignedInMenu() {
-  const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.auth);
   const history = useHistory();
+
+  async function handleSignOut() {
+    try {
+      await signOutFirebase();
+      history.push('/');
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   return (
     <Menu.Item>
       <Image
         avatar
-        spaced="right"
-        src={currentUser.photoURL || "/assests/uder.png"}
+        spaced='right'
+        src={currentUser.photoURL || '/assests/uder.png'}
       />
-      <Dropdown pointing="top left" text={currentUser.email}>
+      <Dropdown pointing='top left' text={currentUser.email}>
         <Dropdown.Menu>
           <Dropdown.Item
             as={Link}
-            to="/createEvent"
-            text="Create Event"
-            icon="plus"
+            to='/createEvent'
+            text='Create Event'
+            icon='plus'
           />
-          <Dropdown.Item text="Your Profile" icon="user" />
-          <Dropdown.Item
-            onClick={() => {
-              dispatch(signOutUser());
-              history.push("/");
-            }}
-            text="Sign Out"
-            icon="power"
-          />
+          <Dropdown.Item text='Your Profile' icon='user' />
+          <Dropdown.Item onClick={handleSignOut} text='Sign Out' icon='power' />
         </Dropdown.Menu>
       </Dropdown>
     </Menu.Item>

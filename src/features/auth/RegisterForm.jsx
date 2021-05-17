@@ -1,4 +1,4 @@
-import { Form, Formik } from 'formik';
+import { ErrorMessage, Form, Formik } from 'formik';
 import React from 'react';
 import ModalWrapper from '../../app/common/modals/ModalWrapper';
 import MyTextInput from '../../app/common/form/FormTextInput';
@@ -6,31 +6,33 @@ import * as Yup from 'yup';
 import { Button, Label } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { closeModal } from '../../app/common/modals/modalReducer';
-import { signInWithEmail } from '../../app/firestore/firebaseService';
+import { registerInFirebase } from '../../app/firestore/firebaseService';
 
-function LoginForm() {
+function RegisterForm() {
   const dispatch = useDispatch();
   return (
-    <ModalWrapper size='mini' header='Sign In'>
+    <ModalWrapper size='mini' header='Register with RaveOn!'>
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ displayName: '', email: '', password: '' }}
         validationSchema={Yup.object({
+          displayName: Yup.string().required(),
           email: Yup.string().required().email(),
           password: Yup.string().required(),
         })}
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           try {
-            await signInWithEmail(values);
+            await registerInFirebase(values);
             setSubmitting(false);
             dispatch(closeModal());
           } catch (error) {
-            setErrors({ auth: 'Problem with username or password' });
+            setErrors({ auth: error.message });
             setSubmitting(false);
           }
         }}
       >
         {({ isSubmitting, isValid, dirty, errors }) => (
           <Form className='ui form'>
+            <MyTextInput name='displayName' placeholder='User Name' />
             <MyTextInput name='email' placeholder='Email Address' />
             <MyTextInput
               name='password'
@@ -48,7 +50,7 @@ function LoginForm() {
               fluid
               size='large'
               color='pink'
-              content='Login'
+              content='Register'
             />
           </Form>
         )}
@@ -57,4 +59,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegisterForm;
