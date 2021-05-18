@@ -10,4 +10,4 @@ export default function ScrollToTop() {
 
   return null;
 }
-// this enusres on every page reload the page has scrolled to the top
+// this enusres on every page reload the page has scrolled to the top for a clean look
