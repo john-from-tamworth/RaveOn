@@ -8,14 +8,14 @@ import { getUserProfile } from '../../../app/firestore/firestoreService';
 import { listenToCurrentUserProfile } from '../profileActions';
 import LoadingIndicator from '../../../app/layout/LoadingIndicator';
 
-function ProfilePage({ match }) {
+function ProfilePage({ profile, match }) {
   const dispatch = useDispatch();
   const { currentUserProfile } = useSelector((state) => state.profile);
   const { loading, error } = useSelector((state) => state.async);
 
   useFirestoreDoc({
     query: () => getUserProfile(match.params.id),
-    data: (profile) => dispatch(listenToCurrentUserProfile(profile)),
+    data: profile => dispatch(listenToCurrentUserProfile(profile)),
     deps: [dispatch, match.params.id],
   });
 

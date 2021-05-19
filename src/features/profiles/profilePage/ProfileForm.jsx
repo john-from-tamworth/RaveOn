@@ -15,12 +15,12 @@ function ProfileForm({ profile }) {
       validationSchema={Yup.object({
         displayName: Yup.string().required(),
       })}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => (console.log(values))}
     >
       {({ isSubmitting, isValid, dirty }) => (
         <Form className='ui form'>
-          <FormTextInput className='displayName' placeholder='Display Name' />
-          <FormTextArea className='description' placeholder='Display Name' />
+          <FormTextInput name='displayName' placeholder='Display Name' />
+          <FormTextArea name='description' placeholder='Display Name' />
           <Button
             loading={isSubmitting}
             disabled={isSubmitting || !isValid || !dirty}
