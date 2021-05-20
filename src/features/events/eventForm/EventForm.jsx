@@ -1,10 +1,9 @@
 /* global google */
-import cuid from 'cuid';
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Header, Segment, Icon } from 'semantic-ui-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { createEvent, listenToEvents, updateEvent } from '../eventActions';
+import { listenToEvents } from '../eventActions';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import FormTextInput from '../../../app/common/form/FormTextInput';
