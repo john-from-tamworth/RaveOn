@@ -21,7 +21,7 @@ function PhotoUpload({ profile, isCurrentUser }) {
         </Grid.Column>
         <Grid.Column width={16}>
           {editMode ? (
-            <PhotoUploader />
+            <PhotoUploader setEditMode={setEditMode} />
           ) : (
             <Card.Group itemsPerRow={5}>
               <Card>
