@@ -33,7 +33,10 @@ function About({ profile, isCurrentUser }) {
                 <strong>
                   Member since: {format(profile.createdAt, 'dd MMM yyyy')}
                 </strong>
-                <div>{profile.description || null}</div>
+
+                <div style={{ marginTop: 20 }}>
+                  {profile.description || null}
+                </div>
               </div>
             </>
           )}
